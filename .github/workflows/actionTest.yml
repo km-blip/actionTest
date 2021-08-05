@@ -1,4 +1,4 @@
-name: dispatch
+name: actiontest
 
 on:
   push:
