@@ -5,7 +5,7 @@ on:
     branches:
       - main
     paths:
-      - "packages.json"
+      - "package.json"
 
 jobs:
   dispatch:
