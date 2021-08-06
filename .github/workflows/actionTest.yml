@@ -17,6 +17,6 @@ jobs:
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
-          repository: km-blip/cpp-library
+          repository: ${{ matrix.repo }}
           event-type: target-updated
 
