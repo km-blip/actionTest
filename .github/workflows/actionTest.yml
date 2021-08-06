@@ -1,19 +1,22 @@
-name: actiontest
-
+name: dispatch target file updated
 on:
   push:
     branches:
       - main
     paths:
-      - "package.json"
-
+      - 'package.json'
 jobs:
-  dispatch:
+  dispatch-target-updated:
+    strategy:
+      matrix:
+        repo: ['organization/repository2']
+    name: dispatch-target-updated
     runs-on: ubuntu-latest
     steps:
-      - name: Dispatch
+      - name: dispatch target-updated
         uses: peter-evans/repository-dispatch@v1
         with:
-          token: ${{ secrets.REPO_ACCESS_TOKEN }}
+          token: ${{ secrets.GITHUB_ACCESS_TOKEN }}
           repository: km-blip/cpp-library
-          event-type: deploy
+          event-type: target-updated
+
