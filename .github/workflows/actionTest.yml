@@ -1,10 +1,6 @@
 name: dispatch target file updated
 on:
   push:
-    branches:
-      - main
-    paths:
-      - 'package.json'
 jobs:
   dispatch-target-updated:
     strategy:
@@ -19,7 +15,8 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: ${{ matrix.repo }}
           event-type: target-updated
-      - run: echo "${GITHUB_REF#refs/heads/}"
       - run: echo "${GITHUB_REF_CONTEXT#refs/heads/}"
         env:
           GITHUB_REF_CONTEXT: ${{ github.ref }}
+      - name: Extract branch name
+        run: echo "${GITHUB_REF##*/}"
