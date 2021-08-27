@@ -1,8 +1,6 @@
 name: dispatch target file updated
 on:
   push:
-    paths:
-      - 'package.json'
 jobs:
   dispatch-target-updated:
     strategy:
