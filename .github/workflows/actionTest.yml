@@ -1,8 +1,6 @@
 name: dispatch target file updated
 on:
   push:
-    branches:
-      - main
     paths:
       - 'package.json'
 jobs:
