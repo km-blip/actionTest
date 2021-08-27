@@ -19,6 +19,4 @@ jobs:
         env:
           GITHUB_REF_CONTEXT: ${{ github.ref }}
       - name: Extract branch name
-        shell: bash
-        run: echo "##[set-output name=branch;]$(echo ${GITHUB_REF#refs/heads/})"
-        id: extract_branch
+        run: echo "${GITHUB_REF##*/}"
