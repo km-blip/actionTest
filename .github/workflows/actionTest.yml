@@ -20,7 +20,7 @@ jobs:
           GITHUB_REF_CONTEXT: ${{ github.ref }}
       - shell: bash
         run: |
-          ls -la ./
-          echo "${GITHUB_REF_CONTEXT#refs/heads/}" > ./${{ matrix.repo }}/hoge.txt
+          ls -la ${{ matrix.repo }}
+          echo "${GITHUB_REF_CONTEXT#refs/heads/}" > ${{ matrix.repo }}/hoge.txt
           ls ${{ matrix.repo }}
 
