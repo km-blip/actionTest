@@ -19,4 +19,6 @@ jobs:
         env:
           GITHUB_REF_CONTEXT: ${{ github.ref }}
       - name: Extract branch name
-        run: echo "${GITHUB_REF##*/}"
+        run: |
+            echo "${GITHUB_REF_CONTEXT#refs/heads/}" > hoge.txt
+            echo "${GITHUB_REF##*/}"
