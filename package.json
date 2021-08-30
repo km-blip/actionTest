@@ -1,6 +1,6 @@
 {
   "name": "@km-blip/stage1-cache",
-  "version": "1.0.75",
+  "version": "1.0.99",
   "description": "",
   "scripts": {
     "test": "exit 0"
