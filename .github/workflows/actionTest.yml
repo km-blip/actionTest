@@ -9,10 +9,9 @@ jobs:
     name: dispatch-target-updated
     runs-on: ubuntu-latest
     steps:
+      - run: echo "PR_REPO=${{GITHUB_REF#refs/heads/}}" >> $GITHUB_ENV
       - name: dispatch target-updated
         uses: peter-evans/repository-dispatch@v1
-        env: 
-          PR_REPO : "${{GITHUB_REF#refs/heads/}}"
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: ${{ matrix.repo }}
