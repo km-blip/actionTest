@@ -12,9 +12,9 @@ jobs:
       - name: dispatch target-updated
         uses: peter-evans/repository-dispatch@v1
         env: 
-          PRrepo : ${{GITHUB_REF#refs/heads/}}
+          PR_REPO : ${{GITHUB_REF#refs/heads/}}
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: ${{ matrix.repo }}
           event-type: target-updated
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "repo": " ${{PRrepo}} "}'
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "repo": " ${{PR_REPO}} "}'
