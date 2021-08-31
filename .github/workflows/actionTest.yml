@@ -15,16 +15,4 @@ jobs:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: ${{ matrix.repo }}
           event-type: target-updated
-      - run: echo "${GITHUB_REF_CONTEXT#refs/heads/}"
-        env:
-          GITHUB_REF_CONTEXT: ${{ github.ref }}
-      - shell: bash
-        run: |
-          echo "${GITHUB_REF_CONTEXT#refs/heads/}" > hoge.txt
-      - name: Extract branch name
-        uses: actions/upload-artifact@v2
-        with:
-          name: code-coverage-report
-          path: .hoge.txt
-      - name: test
-          ls -la
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "repo": " ${GITHUB_REF#refs/heads/} "}'
