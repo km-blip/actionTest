@@ -11,13 +11,13 @@ jobs:
     steps:
       - name: Set env
         run: |
-            echo "PR_REPO=${GITHUB_REF#refs/*/}" >> $GITHUB_ENV
-            echo "${PR_REPO}"
+            echo "::set-output name=PR_REPO::${GITHUB_REF#refs/*/}"
+        id: step-env
       - name: dispatch target-updated
         uses: peter-evans/repository-dispatch@v1
         with:
           token: ${{ secrets.ACCESS_TOKEN }}
           repository: ${{ matrix.repo }}
           event-type: target-updated
-          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "repo": " ${{PR_REPO}} "}'
+          client-payload: '{"ref": "${{ github.ref }}", "sha": "${{ github.sha }}", "repo": " ${{ steps.step-env.outputs.PR_REPO}} "}'
 
